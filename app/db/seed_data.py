@@ -10,7 +10,7 @@ def seed():
         alice = User(name="Alice Johnson", email="alice@example.com")
         bob = User(name="Bob Smith", email="bob@example.com")
         db.add_all([alice, bob])
-        db.flush()  # id-ləri almaq üçün commit gözləmədən flush
+        db.flush()  # Flush to get IDs for relationships
 
         electronics = Category(name="Electronics")
         books = Category(name="Books")

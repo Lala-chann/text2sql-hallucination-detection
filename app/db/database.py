@@ -1,17 +1,18 @@
-#Import the function that creates a database = Verilenler bazasina qosulmaq ucun "engine" adli funksiya
+#TODO: create_engine function creates a CONNECTION object to you database
 from sqlalchemy import create_engine
 
-#Build session objects to interact with the database and declarative_base creates the Base class that all models inherit from
+#TODO: sessionmaker is function that knows how you interact with the database, you use it to QUERY, INSERT, UPDTATE, DELETE
+#TODO: declarative_base creates a base class that all your ORM models will map directly to database tables.
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 #connect with config file from app folder
 from app.config import settings
 
-#Creates the actual data base connection using the URL = data base url qosulmaq ucundur url burda evvelceden .env yazilib
+#TODO: engine creates a connection to the database using the Database URL based on .env file that you set in which database will be using
 engine = create_engine(settings.DATABASE_URL)
 
-#defines the session factory = autocommit deyisiklikleri ozun commit etmleisen, autoflush commit etmeyene qeder deyisiklikler avtomati yazilmir, bin ise sesssin hemin engine baglayir
+#TODO: sessionmaker is factory for creating new session objects. bind=engine means connect to database
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-#bugun orm moddeleri burdan miras alir
+#TODO: The foundation for all your ORM models.
 Base = declarative_base()
